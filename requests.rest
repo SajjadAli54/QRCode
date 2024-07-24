@@ -1,0 +1,9 @@
+GET http://localhost:3000/generateQR?url=https://github.com/SajjadAli54
+
+###
+POST http://localhost:3000/generateQR/
+Accept: application/json
+
+{
+    "url" : "https://github.com/SajjadAli54/QRCode"
+}
