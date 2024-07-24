@@ -3,8 +3,8 @@ const uuid = require("uuid");
 const path = require("path");
 const fs = require("fs");
 
-const data_path = path.join(__dirname, "..", "data", "data.json");
-const image_path = path.join(__dirname, "..", "images");
+const data_path = path.join(__dirname, "generate", "data", "data.json");
+const image_path = path.join(__dirname, "generate", "images");
 
 let data = [];
 
