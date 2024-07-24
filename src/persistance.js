@@ -4,8 +4,10 @@ const path = require("path");
 const fs = require("fs");
 
 const data_path = path.join(__dirname, "..", "data", "data.json");
+const image_path = path.join(__dirname, "..", "images");
 
 let data = [];
+
 try {
   data = require(data_path);
 } catch (err) {
@@ -50,12 +52,7 @@ const addInfo = (labelId, imageUrl, qrCodeData, qrCodeImagePath) => {
 const getMetaData = (imageUrl) => {
   const labelId = uuid.v4();
   const qrCodeData = `${imageUrl}/${labelId}`;
-  const qrCodeImagePath = path.join(
-    __dirname,
-    "..",
-    "images",
-    `qrcode_${labelId}.png`
-  );
+  const qrCodeImagePath = path.join(image_path, `qrcode_${labelId}.png`);
 
   return { labelId, qrCodeData, qrCodeImagePath };
 };

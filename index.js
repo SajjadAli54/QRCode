@@ -1,7 +1,6 @@
 // app.js
 
 const express = require("express");
-const QRCode = require("qrcode");
 const { createImage, saveImage } = require("./src/persistance");
 
 const app = express();
