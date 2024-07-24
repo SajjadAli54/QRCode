@@ -2,11 +2,22 @@
 
 const QRCode = require("qrcode");
 const uuid = require("uuid");
+
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 
 const app = express();
 const PORT = 3000;
+
+const data_path = path.join(__dirname, "data", "data.json");
+
+let data = [];
+try {
+  data = require(data_path);
+} catch (err) {
+  console.error(err);
+}
 
 const qrCodeOptions = {
   color: {
@@ -31,6 +42,15 @@ const saveImage = (imageData, imageUrl) => {
       console.error(err);
       return;
     }
+
+    const newData = {
+      id: labelId,
+      src: imageUrl,
+      imageUrl: qrCodeData,
+      imagePath: qrCodeImagePath,
+    };
+    data.push(newData);
+    fs.writeFileSync(data_path, JSON.stringify(data, null, 2));
   });
 };
 
